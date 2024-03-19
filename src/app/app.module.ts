@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, ErrorComponent],
   imports: [BrowserModule, AppRoutingModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
