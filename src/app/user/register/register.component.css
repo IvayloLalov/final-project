@@ -13,6 +13,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color: rgb(253, 245, 245);
 }
 
 .screen {
@@ -140,7 +141,6 @@ body {
   background: #fff;
   font-size: 14px;
   margin-top: 40px;
-
   padding: 16px 25px;
   border-radius: 26px;
   border: 1px solid #d4d3e8;
