@@ -17,6 +17,7 @@ export class RegisterComponent {
       this.matchPasswords = false;
       return;
     }
+    this.matchPasswords = true;
     console.log(password, rePassword);
   }
 }
