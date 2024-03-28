@@ -1,9 +1,6 @@
 .notification {
-  position: fixed;
-  z-index: 10;
-  right: 8%;
-  top: 8%;
-  padding: 0.5rem;
+  padding: 10px;
+  margin-top: 50px;
   border-radius: 0.5rem;
   color: rgb(255, 255, 255);
   font-style: italic;

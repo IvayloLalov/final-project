@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserModule } from './user/user.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
+import { HttpClientModule } from '@angular/common/http';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -15,10 +17,11 @@ import { RestaurantModule } from './restaurant/restaurant.module';
     BrowserModule,
     CoreModule,
     UserModule,
+    HttpClientModule,
     RestaurantModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
