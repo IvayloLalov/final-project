@@ -1,13 +1,47 @@
 <div class="container">
   <div class="screen">
     <div class="screen__content">
-      <form class="login">
+      <form class="login" #form="ngForm" (ngSubmit)="login(form)">
         <div class="login__field">
-          <input type="text" class="login__input" placeholder="Email" />
+          <input
+            type="email"
+            name="email"
+            class="login__input"
+            placeholder="Email"
+            ngModel
+            #inputEmail="ngModel"
+            required
+            [appEmail]="domains"
+          />
         </div>
+        <ng-container *ngIf="inputEmail.touched">
+          <p class="error" *ngIf="inputEmail.errors?.['required']">
+            Email is required!
+          </p>
+          <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+            Email is not valid!
+          </p>
+        </ng-container>
         <div class="login__field">
-          <input type="password" class="login__input" placeholder="Password" />
+          <input
+            type="password"
+            name="password"
+            class="login__input"
+            placeholder="Password"
+            ngModel
+            #inputPassword="ngModel"
+            required
+            minlength="5"
+          />
         </div>
+        <ng-container *ngIf="inputPassword.touched">
+          <p class="error" *ngIf="inputPassword.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+            Password must be at least 5 characters!
+          </p>
+        </ng-container>
         <button class="button login__submit">
           <span class="button__text">Log In Now</span>
         </button>

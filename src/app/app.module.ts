@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { UserModule } from './user/user.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
+import { EmailDirective } from './shared/validators/email.directive';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ErrorComponent],

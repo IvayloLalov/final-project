@@ -86,7 +86,7 @@ body {
 .login {
   width: 290px;
   padding: 30px;
-  padding-top: 156px;
+  padding-top: 106px;
 }
 
 .login__field {
@@ -121,7 +121,7 @@ body {
 .login__submit {
   background: #fff;
   font-size: 14px;
-  margin-top: 30px;
+  margin-top: 15px;
   padding: 16px 25px;
   border-radius: 26px;
   border: 1px solid #d4d3e8;
@@ -166,4 +166,12 @@ body {
   font-size: 24px;
   margin-left: auto;
   color: #7875b5;
+}
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  font-size: 13px;
 }

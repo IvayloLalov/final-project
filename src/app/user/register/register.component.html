@@ -1,18 +1,81 @@
 <div class="container">
   <div class="screen">
     <div class="screen__content">
-      <form class="login">
+      <form class="login" #form="ngForm" (ngSubmit)="register(form)">
         <div class="login__field">
-          <input type="text" class="login__input" placeholder="Email" />
-          <input type="text" class="login__input" placeholder="Username" />
+          <input
+            type="email"
+            class="login__input"
+            placeholder="Email"
+            name="email"
+            ngModel
+            #inputEmail="ngModel"
+            required
+            [appEmail]="domains"
+          />
+          <ng-container *ngIf="inputEmail.touched">
+            <p class="error" *ngIf="inputEmail.errors?.['required']">
+              Email is required!
+            </p>
+            <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+              Email is not valid!
+            </p>
+          </ng-container>
+          <input
+            type="username"
+            class="login__input"
+            placeholder="Username"
+            name="username"
+            ngModel
+            #inputUsername="ngModel"
+            required
+            minlength="5"
+          />
         </div>
+        <ng-container *ngIf="inputUsername.touched">
+          <p class="error" *ngIf="inputUsername.errors?.['required']">
+            Username is required!
+          </p>
+          <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+            Username must be at least 5 characters!
+          </p>
+        </ng-container>
         <div class="login__field">
-          <input type="password" class="login__input" placeholder="Password" />
+          <input
+            type="password"
+            class="login__input"
+            placeholder="Password"
+            name="password"
+            ngModel
+            #inputPassword="ngModel"
+            required
+            minlength="5"
+          />
+          <ng-container *ngIf="inputPassword.touched">
+            <p class="error" *ngIf="inputPassword.errors?.['required']">
+              Password is required!
+            </p>
+            <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+              Password must be at least 5 characters!
+            </p>
+          </ng-container>
           <input
             type="password"
             class="login__input"
             placeholder="Repeat Password"
+            name="rePassword"
+            ngModel
+            #inputRePassword="ngModel"
+            required
           />
+          <ng-container *ngIf="inputRePassword.touched">
+            <p class="error" *ngIf="inputRePassword.errors?.['required']">
+              Repeat password is required!
+            </p>
+          </ng-container>
+          <div *ngIf="!matchPasswords">
+            <p class="error">Repeat Password does not match password!</p>
+          </div>
         </div>
         <button class="button register__submit">
           <span class="button__text">Register Now</span>
