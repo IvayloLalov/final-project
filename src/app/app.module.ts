@@ -10,12 +10,14 @@ import { UserModule } from './user/user.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     CoreModule,
+    SharedModule,
     UserModule,
     HttpClientModule,
     RestaurantModule,

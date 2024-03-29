@@ -1,35 +1,97 @@
 <div class="row">
   <h1>Add your favourite<br />restaurant</h1>
 </div>
-<div class="row">
-  <span>
-    <input class="basic-slide" id="name" type="text" /><label for="name"
-      >Name</label
-    >
-  </span>
-  <span>
-    <input class="basic-slide" id="type" type="text" /><label for="type"
-      >Type</label
-    >
-  </span>
-  <span>
-    <input class="basic-slide" id="location" type="text" /><label for="location"
-      >Location</label
-    >
-  </span>
-  <span>
-    <input class="basic-slide" id="photo" type="text" /><label for="photo"
-      >Photo</label
-    >
-  </span>
-
-  <span>
-    <textarea
-      class="basic-slide"
-      id="description"
-      type="text"
-      rows="6"
-    ></textarea
-    ><label for="description" class="description">Description</label>
-  </span>
-</div>
+<form [formGroup]="form" (ngSubmit)="addRestaurant()">
+  <div class="row">
+    <span>
+      <input
+        class="basic-slide"
+        id="name"
+        type="text"
+        name="name"
+        formControlName="name"
+      />
+      <label for="name">Name</label>
+    </span>
+    <ng-container *ngIf="form.get('name')?.touched">
+      <p class="error" *ngIf="form.get('name')?.errors?.['required']">
+        Name is required.
+      </p>
+      <p class="error" *ngIf="form.get('name')?.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </p>
+    </ng-container>
+    <span>
+      <input
+        class="basic-slide"
+        id="type"
+        type="text"
+        name="type"
+        formControlName="type"
+      /><label for="type">Type</label>
+    </span>
+    <ng-container *ngIf="form.get('type')?.touched">
+      <p class="error" *ngIf="form.get('type')?.errors?.['required']">
+        Type is required.
+      </p>
+      <p class="error" *ngIf="form.get('type')?.errors?.['minlength']">
+        Type must be at least 4 characters long.
+      </p>
+    </ng-container>
+    <span>
+      <input
+        class="basic-slide"
+        id="location"
+        type="text"
+        name="location"
+        formControlName="location"
+      /><label for="location">Location</label>
+    </span>
+    <ng-container *ngIf="form.get('location')?.touched">
+      <p class="error" *ngIf="form.get('location')?.errors?.['required']">
+        Location is required.
+      </p>
+      <p class="error" *ngIf="form.get('location')?.errors?.['minlength']">
+        Location must be at least 6 characters long.
+      </p>
+    </ng-container>
+    <span>
+      <input
+        class="basic-slide"
+        id="image"
+        type="text"
+        name="image"
+        formControlName="image"
+      /><label for="image">Image</label>
+    </span>
+    <ng-container *ngIf="form.get('image')?.touched">
+      <p class="error" *ngIf="form.get('image')?.errors?.['required']">
+        URL is required.
+      </p>
+      <p class="error" *ngIf="form.get('image')?.errors?.['pattern']">
+        URL must start with "http://" or "https://" and must end with ".png" or
+        ".jpeg"
+      </p>
+    </ng-container>
+    <span>
+      <textarea
+        class="basic-slide"
+        id="description"
+        type="text"
+        name="description"
+        rows="6"
+        formControlName="description"
+      ></textarea
+      ><label for="description" class="description">Description</label>
+    </span>
+    <ng-container *ngIf="form.get('description')?.touched">
+      <p class="error" *ngIf="form.get('description')?.errors?.['required']">
+        Description is required.
+      </p>
+      <p class="error" *ngIf="form.get('description')?.errors?.['minlength']">
+        Description must be at least 10 characters long.
+      </p>
+    </ng-container>
+    <button class="button-21" role="button">Add Restaurant</button>
+  </div>
+</form>

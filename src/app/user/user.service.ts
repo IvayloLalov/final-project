@@ -9,44 +9,99 @@ import { UserForAuth } from 'src/types/user';
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+
+  public user$ = this.user$$.asObservable();
 
   user: UserForAuth | undefined;
-  USER_KEY = '[user]';
-
-  userSubscription: Subscription;
-
-  get isLogged(): boolean {
-    return !!this.user;
+  private subscription: Subscription = new Subscription();
+  get isLoggedIn(): boolean {
+    return !!this.user$$.getValue();
   }
 
   constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {
+    this.loadUserFromLocalStorage();
+    this.subscription = this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
+  private loadUserFromLocalStorage(): void {
+    const accessToken = localStorage.getItem('accessToken');
+    const email = localStorage.getItem('email');
+    const username = localStorage.getItem('username');
+    const _id = localStorage.getItem('userId');
+
+    if (accessToken && email && username && _id) {
+      this.user$$.next({ email, username, _id, accessToken });
+    } else {
+      this.user$$.next(undefined);
+    }
+  }
+
   login(email: string, password: string) {
     return this.http
-      .post<UserForAuth>(`${environment.userUrl}/login`, { email, password })
-      .pipe(tap((user) => this.user$$.next(user)));
-  }
+      .post<{
+        email: string;
+        username: string;
+        _id: string;
+        accessToken: string;
+      }>(`${environment.userUrl}/login`, { email, password })
+      .pipe(
+        tap((res) => {
+          console.log(res);
 
-  register(
-    username: string,
-    email: string,
-    password: string,
-    rePassword: string
-  ) {
+          localStorage.setItem('accessToken', res.accessToken);
+
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('username', res.username);
+          localStorage.setItem('userId', res._id);
+          this.user$$.next({
+            email: res.email,
+            username: res.username,
+            _id: res._id,
+            accessToken: res.accessToken,
+          });
+        })
+      );
+  }
+  register(username: string, email: string, password: string) {
+    const { userUrl } = environment;
+
     return this.http
-      .post<UserForAuth>(`${environment.userUrl}/register`, {
-        username,
-        email,
-        password,
-        rePassword,
-      })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .post<{
+        email: string;
+        username: string;
+        _id: string;
+        accessToken: string;
+      }>(`${userUrl}/register`, { username, email, password })
+      .pipe(
+        tap((res) => {
+          localStorage.setItem('accessToken', res.accessToken);
+
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('username', res.username);
+          localStorage.setItem('userId', res._id);
+          this.user$$.next({
+            email: res.email,
+            username: res.username,
+            _id: res._id,
+            accessToken: res.accessToken,
+          });
+        })
+      );
   }
 
-  ngOnDestroy(): void {}
+  logout() {
+    return this.http
+      .post<UserForAuth>(`${environment.userUrl}/logout`, {})
+      .pipe(
+        tap((res) => {
+          localStorage.clear();
+          this.user$$.next(undefined);
+        })
+      );
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

@@ -27,10 +27,8 @@ export class RegisterComponent {
     }
     this.matchPasswords = true;
 
-    this.userService
-      .register(username!, email!, password!, rePassword!)
-      .subscribe(() => {
-        this.router.navigate(['/add-restaurant']);
-      });
+    this.userService.register(username!, email!, password!).subscribe(() => {
+      this.router.navigate(['/add-restaurant']);
+    });
   }
 }

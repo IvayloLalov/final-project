@@ -13,17 +13,33 @@ import { environment } from 'src/environments/environment.development';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  API = '/api';
-
   constructor(private errorService: ErrorService, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.startsWith(environment.dataUrl || environment.userUrl)) {
+    // if (req.url.startsWith(environment.dataUrl || environment.userUrl)) {
+    //   req = req.clone({
+    //     withCredentials: true,
+    //   });
+    // }
+
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (req.url.startsWith('http://localhost:3030') && accessToken) {
       req = req.clone({
-        withCredentials: true,
+        setHeaders: {
+          'X-Authorization': accessToken,
+        },
+      });
+    }
+
+    if (!req.headers.has('Content-Type')) {
+      req = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+        },
       });
     }
 

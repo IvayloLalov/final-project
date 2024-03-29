@@ -14,6 +14,7 @@ header {
   display: flex;
   justify-content: space-between;
   box-shadow: 0 0 25px 0 black;
+  z-index: 10;
 }
 
 header ul {
@@ -39,4 +40,9 @@ header li a:hover {
   border-radius: 0.9em;
   background-color: darkgrey;
   color: white;
+  cursor: pointer;
+}
+
+.div-header {
+  display: flex;
 }

@@ -4,6 +4,7 @@ import { AddRestaurantComponent } from './add-restaurant/add-restaurant.componen
 import { RestaurantsListComponent } from './restaurants-list/restaurants-list.component';
 import { CurrentRestaurantComponent } from './current-restaurant/current-restaurant.component';
 import { ReastaurantRoutingModule } from './restaurant-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,11 @@ import { ReastaurantRoutingModule } from './restaurant-routing.module';
     RestaurantsListComponent,
     CurrentRestaurantComponent,
   ],
-  imports: [CommonModule, ReastaurantRoutingModule],
+  imports: [
+    CommonModule,
+    ReastaurantRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class RestaurantModule {}
