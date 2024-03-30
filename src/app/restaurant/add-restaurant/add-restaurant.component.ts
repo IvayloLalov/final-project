@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EMAIL_DOMAINS } from 'src/app/constants';
-import { emailValidator } from 'src/app/shared/utils/email-validator';
-import { UserService } from 'src/app/user/user.service';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-add-restaurant',
@@ -17,15 +15,27 @@ export class AddRestaurantComponent {
     location: ['', [Validators.required, Validators.minLength(6)]],
     image: [
       '',
-      [Validators.required, Validators.pattern('https?://.*.(png|jpeg)')],
+      [Validators.required, Validators.pattern('https?://.*.(png|jpeg|jpg)')],
     ],
     description: ['', [Validators.required, Validators.minLength(10)]],
   });
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private api: ApiService,
     private router: Router
   ) {}
-  addRestaurant() {}
+  addRestaurant() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    const { name, type, location, image, description } = this.form.value;
+
+    this.api
+      .addRestaurant(name!, type!, location!, image!, description!)
+      .subscribe(() => {
+        this.router.navigate(['/restaurants']);
+      });
+  }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: ':restaurantId',
         component: CurrentRestaurantComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
     ],
   },

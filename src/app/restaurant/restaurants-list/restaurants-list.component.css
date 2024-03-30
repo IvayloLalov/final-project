@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://maxmediabg.com/wp-content/uploads/2020/03/2019i_006-1.jpg");
+  background-position: 0%;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+}
+
+.listing {
+  width: 70em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  padding: 2em;
+}
+
+.listing::after,
+.listing::before {
+  display: block;
+  content: "";
+  flex: 0 0 250px;
+  order: 9999;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 250px;
+  height: 350px;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  border-radius: 0.3em;
+  border: 1px solid #ccc;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-color: white;
+}
+
+.card .media {
+  margin-bottom: 0.1em;
+}
+
+.card .name {
+  font-weight: bold;
+  padding: 0.5em 1em;
+  font-size: 22px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.card .type,
+.card .location {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card .footer {
+  margin-top: auto;
+  padding: 0.5em 1em;
+  color: #369;
+  text-align: right;
+}
+
+.card:hover {
+  background: #ccc;
+}
+
+.card:hover .footer {
+  text-decoration: underline;
+}

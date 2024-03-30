@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { Test } from 'src/types/restaurant';
+import { Restaurant } from 'src/types/restaurant';
 
 @Component({
   selector: 'app-restaurants-list',
@@ -8,12 +8,12 @@ import { Test } from 'src/types/restaurant';
   styleUrls: ['./restaurants-list.component.css'],
 })
 export class RestaurantsListComponent implements OnInit {
-  test: Test[] = [];
+  restaurants: Restaurant[] = [];
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    this.api.getRestaurants().subscribe((test) => {
-      this.test = test;
+    this.api.getRestaurants().subscribe((restaurants) => {
+      this.restaurants = restaurants;
     });
   }
 }

@@ -1,16 +1,15 @@
-<div *ngFor="let t of test">
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t._id }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t._createdOn }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-  <h1>{{ t.title }}</h1>
-</div>
+<body>
+  <div class="listing">
+    <a [routerLink]="t._id" class="card" *ngFor="let t of restaurants">
+      <span class="media">
+        <img src="{{ t.img }}" />
+      </span>
+      <span class="name">{{ t.name }}</span>
+      <span class="type">Type: {{ t.type }}</span>
+      <span class="location">Location: {{ t.location }} </span>
+      <span class="footer">
+        <span class="button">Read Description</span>
+      </span>
+    </a>
+  </div>
+</body>

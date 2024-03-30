@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Restaurant, Test } from 'src/types/restaurant';
+import { Restaurant } from 'src/types/restaurant';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,12 @@ export class ApiService {
   getRestaurants() {
     const { dataUrl } = environment;
 
-    return this.http.get<Test[]>(`${dataUrl}/restaurants`);
+    return this.http.get<Restaurant[]>(`${dataUrl}/restaurants`);
+  }
+
+  getRestaurant(id: string) {
+    const { dataUrl } = environment;
+    return this.http.get<Restaurant>(`${dataUrl}/restaurants/${id}`);
   }
 
   addRestaurant(
