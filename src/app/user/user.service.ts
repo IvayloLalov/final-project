@@ -48,8 +48,6 @@ export class UserService implements OnDestroy {
       }>(`${environment.userUrl}/login`, { email, password })
       .pipe(
         tap((res) => {
-          console.log(res);
-
           localStorage.setItem('accessToken', res.accessToken);
 
           localStorage.setItem('email', res.email);

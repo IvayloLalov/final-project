@@ -8,7 +8,13 @@
       <p class="card-body">
         {{ restaurant.description }}
       </p>
+      <span class="buttons" *ngIf="isOwner">
+        <button class="button edit">Edit</button>
+        <button class="button delete" (click)="removeRestaurant()">
+          Delete
+        </button>
+      </span>
     </div>
-    <div class="card-add">Add Comment</div>
+    <button class="card-add">Add Comment</button>
   </div>
 </div>

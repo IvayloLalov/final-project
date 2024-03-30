@@ -57,8 +57,36 @@
   background-color: #b40e0b;
   color: #fff;
   margin-left: auto;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.button {
+  width: 100px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  border: 2px solid rgb(51, 51, 51);
+  padding: 0.5em 0.9em;
+  margin: 1px;
+  border-radius: 2em;
+  background-color: rgb(251, 251, 251);
+  color: #000;
+}
+
+.buttons {
+  position: absolute;
+  bottom: -2%;
+  left: 38%;
+}
+
+.edit:hover {
+  background-color: lightgreen;
+}
+
+.delete:hover {
+  background-color: #b40e0b;
 }

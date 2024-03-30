@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Restaurant } from 'src/types/restaurant';
@@ -35,5 +35,11 @@ export class ApiService {
       img,
       description,
     });
+  }
+
+  deleteRestaurant(id: string) {
+    const { dataUrl } = environment;
+
+    return this.http.delete<Restaurant>(`${dataUrl}/restaurants/${id}`);
   }
 }
