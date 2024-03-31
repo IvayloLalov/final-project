@@ -9,7 +9,9 @@
         {{ restaurant.description }}
       </p>
       <span class="buttons" *ngIf="isOwner">
-        <button class="button edit">Edit</button>
+        <a routerLink="/restaurants/{{ restaurant._id }}/edit"
+          ><button class="button edit">Edit</button></a
+        >
         <button class="button delete" (click)="removeRestaurant()">
           Delete
         </button>

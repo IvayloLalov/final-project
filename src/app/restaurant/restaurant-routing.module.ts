@@ -4,6 +4,8 @@ import { RestaurantsListComponent } from './restaurants-list/restaurants-list.co
 import { AddRestaurantComponent } from './add-restaurant/add-restaurant.component';
 import { CurrentRestaurantComponent } from './current-restaurant/current-restaurant.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
+import { IsOwnerGuard } from '../guards/isOwner.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +16,11 @@ const routes: Routes = [
         path: ':restaurantId',
         component: CurrentRestaurantComponent,
         // canActivate: [AuthGuard],
+      },
+      {
+        path: ':restaurantId/edit',
+        component: EditRestaurantComponent,
+        canActivate: [IsOwnerGuard],
       },
     ],
   },

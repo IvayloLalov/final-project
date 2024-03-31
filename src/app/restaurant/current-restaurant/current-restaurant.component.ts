@@ -24,6 +24,7 @@ export class CurrentRestaurantComponent implements OnInit {
       const id = data['restaurantId'];
       this.apiService.getRestaurant(id).subscribe((restaurant) => {
         this.restaurant = restaurant;
+        localStorage.setItem('ownerId', restaurant._ownerId);
         this.isOwner = this.userService.user?._id === restaurant._ownerId;
       });
     });
