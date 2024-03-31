@@ -9,14 +9,25 @@
         {{ restaurant.description }}
       </p>
       <span class="buttons" *ngIf="isOwner">
-        <a routerLink="/restaurants/{{ restaurant._id }}/edit"
-          ><button class="button edit">Edit</button></a
+        <button
+          class="button edit"
+          routerLink="/restaurants/{{ restaurant._id }}/edit"
         >
+          Edit
+        </button>
+
         <button class="button delete" (click)="removeRestaurant()">
           Delete
         </button>
       </span>
     </div>
-    <button class="card-add">Add Comment</button>
+
+    <button
+      class="card-add"
+      *ngIf="isLoggedIn"
+      routerLink="/restaurants/{{ restaurant._id }}/add-comment"
+    >
+      Add Comment
+    </button>
   </div>
 </div>

@@ -1,6 +1,4 @@
 export interface User {
-  restaurants: string[];
-  comments: string[];
   _id: string;
   email: string;
   username: string;

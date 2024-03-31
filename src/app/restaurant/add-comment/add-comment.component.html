@@ -1,0 +1,24 @@
+<div id="wrapper">
+  <form #form="ngForm" (ngSubmit)="addComment(form)">
+    <div id="margin"></div>
+    <textarea
+      placeholder="Add your comment."
+      id="text"
+      name="text"
+      rows="6"
+      ngModel
+      required
+      minlength="5"
+      #inputText="ngModel"
+      style="
+        overflow: hidden;
+        word-wrap: break-word;
+        resize: none;
+        height: 250px;
+      "
+    ></textarea>
+    <br />
+    <button class="button">Create</button>
+    <button class="button" (click)="onCancel($event)">Cancel</button>
+  </form>
+</div>

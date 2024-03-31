@@ -19,6 +19,10 @@ export class CurrentRestaurantComponent implements OnInit {
     private router: Router
   ) {}
 
+  get isLoggedIn(): boolean {
+    return this.userService.isLoggedIn;
+  }
+
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data) => {
       const id = data['restaurantId'];

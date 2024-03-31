@@ -6,6 +6,7 @@ import { CurrentRestaurantComponent } from './current-restaurant/current-restaur
 import { ReastaurantRoutingModule } from './restaurant-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.compo
     RestaurantsListComponent,
     CurrentRestaurantComponent,
     EditRestaurantComponent,
+    AddCommentComponent,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { CurrentRestaurantComponent } from './current-restaurant/current-restaur
 import { AuthGuard } from '../guards/auth.guard';
 import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
 import { IsOwnerGuard } from '../guards/isOwner.guard';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
         path: ':restaurantId/edit',
         component: EditRestaurantComponent,
         canActivate: [IsOwnerGuard],
+      },
+      {
+        path: ':restaurantId/add-comment',
+        component: AddCommentComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
