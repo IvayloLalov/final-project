@@ -19,3 +19,7 @@ export interface RestaurantForUpdate {
   img: string;
   description: string;
 }
+
+export interface RestaurantForComments {
+  comments: Comment[];
+}

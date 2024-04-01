@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
 import { Restaurant } from 'src/types/restaurant';
+import { Comment } from 'src/types/comment';
 
 @Component({
   selector: 'app-current-restaurant',
@@ -12,6 +13,9 @@ import { Restaurant } from 'src/types/restaurant';
 export class CurrentRestaurantComponent implements OnInit {
   restaurant = {} as Restaurant;
   isOwner: boolean = false;
+  comments: Comment[] = [];
+  comments2: Comment[] = [];
+
   constructor(
     private apiService: ApiService,
     private userService: UserService,
@@ -28,6 +32,19 @@ export class CurrentRestaurantComponent implements OnInit {
       const id = data['restaurantId'];
       this.apiService.getRestaurant(id).subscribe((restaurant) => {
         this.restaurant = restaurant;
+
+        this.apiService.getCommentService().subscribe((comment) => {
+          this.comments = comment;
+
+          for (const comment of this.comments) {
+            console.log(comment);
+            console.log(id);
+            console.log(comment.restaurantId === id);
+            if (comment.restaurantId === id) {
+              this.comments2.push(comment);
+            }
+          }
+        });
         localStorage.setItem('ownerId', restaurant._ownerId);
         this.isOwner = this.userService.user?._id === restaurant._ownerId;
       });

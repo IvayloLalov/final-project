@@ -4,11 +4,12 @@
     <textarea
       placeholder="Add your comment."
       id="text"
+      type="text"
       name="text"
       rows="6"
       ngModel
       required
-      minlength="5"
+      minlength="4"
       #inputText="ngModel"
       style="
         overflow: hidden;
@@ -17,6 +18,14 @@
         height: 250px;
       "
     ></textarea>
+    <ng-container *ngIf="inputText.touched">
+      <p class="error" *ngIf="inputText.errors?.['required']">
+        Comment is required!
+      </p>
+      <p class="error" *ngIf="inputText.errors?.['minlength']">
+        Comment must be at least 4 characters!
+      </p>
+    </ng-container>
     <br />
     <button class="button">Create</button>
     <button class="button" (click)="onCancel($event)">Cancel</button>

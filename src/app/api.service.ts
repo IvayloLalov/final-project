@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { Comment } from 'src/types/comment';
 import { Restaurant, RestaurantForUpdate } from 'src/types/restaurant';
 
 @Injectable({
@@ -23,7 +24,8 @@ export class ApiService {
     type: string,
     location: string,
     img: string,
-    description: string
+    description: string,
+    comments: Comment[]
   ) {
     return this.http.post<Restaurant>(`${this.dataUrl}/restaurants`, {
       name,
@@ -31,6 +33,7 @@ export class ApiService {
       location,
       img,
       description,
+      comments,
     });
   }
 
@@ -56,5 +59,23 @@ export class ApiService {
 
   deleteRestaurant(id: string) {
     return this.http.delete<Restaurant>(`${this.dataUrl}/restaurants/${id}`);
+  }
+
+  addCommentService(
+    text: string,
+    userId: string,
+    username: string,
+    restaurantId: string
+  ) {
+    return this.http.post<Comment>(`${this.dataUrl}/comments`, {
+      text,
+      userId,
+      username,
+      restaurantId,
+    });
+  }
+
+  getCommentService() {
+    return this.http.get<Comment[]>(`${this.dataUrl}/comments`);
   }
 }

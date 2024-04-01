@@ -31,3 +31,20 @@
     </button>
   </div>
 </div>
+
+<!-- <div *ngFor="let c of comments2">{{ c.text }}</div> -->
+<div class="ag-courses_box">
+  <div class="ag-courses_item" *ngFor="let c of comments2">
+    <a class="ag-courses-item_link">
+      <div class="ag-courses-item_bg"></div>
+
+      <div class="ag-courses-item_title">
+        {{ c.text }}
+      </div>
+
+      <div class="ag-courses-item_date-box">
+        <span class="ag-courses-item_date"> {{ c.username }} </span>
+      </div>
+    </a>
+  </div>
+</div>
