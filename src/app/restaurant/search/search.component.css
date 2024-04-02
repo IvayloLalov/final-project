@@ -1,0 +1,151 @@
+div {
+  margin: auto;
+  position: relative;
+  top: 100px;
+  left: 5%;
+  width: 40%;
+}
+
+#form {
+  width: 400px;
+  padding: 10px;
+  font-size: 18px;
+  outline: none;
+  background: linear-gradient(to left top, #ddd7d7, #b08fca) fixed;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: black;
+  transition: all 0.5s;
+}
+
+#form:hover {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+#form:focus {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to left top, #000, #4e2d69) fixed;
+  color: white;
+}
+
+#button {
+  width: 400px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  background: linear-gradient(to left top, #000, #4e2d69) fixed;
+  border-radius: 10px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.5s;
+}
+
+#button:hover {
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to left top, #000, #8b5db0) fixed;
+}
+
+#button:focus {
+  background: linear-gradient(to left top, #8b5db0, #000) fixed;
+}
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  font-size: 13px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+}
+
+.listing {
+  width: 70em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  padding: 2em;
+  margin: 0;
+}
+
+.listing::after,
+.listing::before {
+  display: block;
+  content: "";
+  flex: 0 0 250px;
+  order: 9999;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 250px;
+  height: 350px;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  border-radius: 0.3em;
+  border: 1px solid #ccc;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  background-color: rgb(238, 237, 234);
+}
+
+.card .media {
+  margin-bottom: 0.1em;
+}
+
+.card .name {
+  font-weight: bold;
+  padding: 0.5em 1em;
+  font-size: 22px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.card .type,
+.card .location {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card .footer {
+  margin-top: auto;
+  padding: 0.5em 1em;
+  color: #369;
+  text-align: right;
+}
+
+.card:hover {
+  background: #ccc;
+}
+
+.card:hover .footer {
+  text-decoration: underline;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap");
+
+.no-match {
+  font-family: "Calligraffitti", cursive;
+  font-weight: 400;
+  font-size: 70px;
+  position: absolute;
+  text-shadow: 2px 3px 2px #ced0d3;
+  top: 55%;
+  left: 33%;
+  transform: translate(-10%, -10%);
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #b4b3af;
+  text-shadow: 1px 3px 0px #6d6c6b;
+}

@@ -24,8 +24,7 @@ export class ApiService {
     type: string,
     location: string,
     img: string,
-    description: string,
-    comments: Comment[]
+    description: string
   ) {
     return this.http.post<Restaurant>(`${this.dataUrl}/restaurants`, {
       name,
@@ -33,7 +32,6 @@ export class ApiService {
       location,
       img,
       description,
-      comments,
     });
   }
 
@@ -77,5 +75,11 @@ export class ApiService {
 
   getCommentService() {
     return this.http.get<Comment[]>(`${this.dataUrl}/comments`);
+  }
+
+  getSearchedRestaurants(search: string) {
+    return this.http.get<Restaurant[]>(
+      `${this.dataUrl}/restaurants?where=type%3D%22${search}%22`
+    );
   }
 }

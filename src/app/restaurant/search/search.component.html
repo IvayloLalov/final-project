@@ -1,0 +1,42 @@
+<div>
+  <form #form="ngForm" (ngSubmit)="Search(form)">
+    <input
+      type="text"
+      name="search"
+      id="form"
+      ngModel
+      #inputSearch="ngModel"
+      required
+      minlength="3"
+      placeholder="Search for your favourite type..."
+    />
+    <ng-container *ngIf="inputSearch.touched">
+      <p class="error" *ngIf="inputSearch.errors?.['required']">
+        Search is required!
+      </p>
+      <p class="error" *ngIf="inputSearch.errors?.['minlength']">
+        Search must be at least 3 characters!
+      </p>
+    </ng-container>
+    <input type="submit" id="button" value="Search" />
+  </form>
+</div>
+<div *ngIf="!isMatching" class="no-match">There is no match....</div>
+
+<div class="listing" *ngIf="isMatching">
+  <a
+    routerLink="/restaurants/{{ t._id }}"
+    class="card"
+    *ngFor="let t of restaurants"
+  >
+    <span class="media">
+      <img src="{{ t.img }}" />
+    </span>
+    <span class="name">{{ t.name }}</span>
+    <span class="type">Type: {{ t.type }}</span>
+    <span class="location">Location: {{ t.location }} </span>
+    <span class="footer">
+      <span class="button">Read Description</span>
+    </span>
+  </a>
+</div>

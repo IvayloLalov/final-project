@@ -7,6 +7,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
 import { IsOwnerGuard } from '../guards/isOwner.guard';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,6 @@ const routes: Routes = [
       {
         path: ':restaurantId',
         component: CurrentRestaurantComponent,
-        // canActivate: [AuthGuard],
       },
       {
         path: ':restaurantId/edit',
@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'add-restaurant',
     component: AddRestaurantComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
   },
 ];
 
