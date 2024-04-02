@@ -28,7 +28,7 @@ export class AddCommentComponent {
         .addCommentService(text, userId, username!, restaurantId)
         .subscribe({
           next: () => {
-            this.router.navigate(['/restaurants']);
+            this.router.navigate([`/restaurants/${restaurantId}`]);
           },
           error: () => {
             this.router.navigate(['/restaurants']);

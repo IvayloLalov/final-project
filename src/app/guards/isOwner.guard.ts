@@ -8,10 +8,6 @@ export const IsOwnerGuard: CanActivateFn = (route, state) => {
 
   const ownerId = localStorage.getItem('ownerId');
   const isTheOwner = ownerId === userId;
-  console.log('ownerId', ownerId);
-  console.log('userId', userId);
-
-  console.log('isOwner', isTheOwner);
 
   if (!isTheOwner) {
     router.navigate(['home']);

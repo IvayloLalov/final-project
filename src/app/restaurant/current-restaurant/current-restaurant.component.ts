@@ -37,9 +37,6 @@ export class CurrentRestaurantComponent implements OnInit {
           this.comments = comment;
 
           for (const comment of this.comments) {
-            console.log(comment);
-            console.log(id);
-            console.log(comment.restaurantId === id);
             if (comment.restaurantId === id) {
               this.comments2.push(comment);
             }
