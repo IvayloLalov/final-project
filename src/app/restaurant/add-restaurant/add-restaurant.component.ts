@@ -33,7 +33,13 @@ export class AddRestaurantComponent {
     const { name, type, location, image, description } = this.form.value;
 
     this.api
-      .addRestaurant(name!, type!, location!, image!, description!)
+      .addRestaurant(
+        name!,
+        type!.toLowerCase(),
+        location!,
+        image!,
+        description!
+      )
       .subscribe(() => {
         this.router.navigate(['/restaurants']);
       });

@@ -27,5 +27,6 @@ export class SearchComponent {
         this.isMatching = true;
       }
     });
+    this.isMatching = false;
   }
 }
