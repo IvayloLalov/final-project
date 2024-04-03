@@ -197,7 +197,6 @@ a.more-link {
 }
 
 a.more-link:hover {
-  /* background-color: #99749d; */
   color: black;
   text-decoration: underline;
 }
